@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Uso de Fetch</title>
+</head>
+<body>
+    <h1>Respuesta del servidor:</h1>
+    <pre id="respuesta">Esperando respuesta...</pre>
+
+    <button id="boton">Llamar al servidor</button>
+
+    <script>
+        document.getElementById('boton').addEventListener('click', () => {
+            fetch('/api/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('respuesta').textContent = data.message;
+                })
+                .catch(error => {
+                    document.getElementById('respuesta').textContent = 'Error: ' + error;
+                });
+        });
+    </script>
+</body>
+</html>
